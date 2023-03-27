@@ -80,8 +80,11 @@ const licenses = [
 ]
 
 function generateReadme({title, description, instructions, usageInfo, contGuides, testInfo, license, username, email}){
+    let licenseIndex = licenses.findIndex((element) => {
+        return element.name == license;
+    })
     return `
-    # ${title}
+    # ${title}  [![License](${licenses[licenseIndex].badge})](${licenses[licenseIndex].link})
 
     # Description
     ## ${description}
@@ -179,3 +182,5 @@ inquirer
             name: 'email'
         }
     ])
+
+    .then((answers) => generateReadme(answers));
