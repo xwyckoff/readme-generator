@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const fs = require("fs")
 const licenses = [
     {
         name: 'Apache 2.0',
@@ -84,31 +85,31 @@ function generateReadme({title, description, instructions, usageInfo, contGuides
         return element.name == license;
     })
     return `
-    # ${title}  [![License](${licenses[licenseIndex].badge})](${licenses[licenseIndex].link})
+# ${title}  [![License](${licenses[licenseIndex].badge})](${licenses[licenseIndex].link})
 
-    # Description
-    ## ${description}
+## Description
+${description}
 
-    # Installation Instructions
-    ## ${instructions}
+## Installation Instructions
+${instructions}
 
-    # Usage
-    ## ${usageInfo}
+## Usage
+${usageInfo}
 
-    # Contribution Guidelines
-    ## ${contGuides}
+## Contribution Guidelines
+${contGuides}
 
-    # Test Instructions
-    ## ${testInfo}
+## Test Instructions
+${testInfo}
 
-    # License
-    ## ${title} is licensed under the ${license} license
+## License
+${title} is licensed under the ${license} license
 
-    # Questions
-    ## Direct any additional questions to my GitHub or Email
-    ## My GitHub: https://github.com/${username}
-    ## My Email: ${email}
-    `
+## Questions
+Direct any additional questions to my GitHub or Email\n
+My GitHub: https://github.com/${username}\n
+My Email: ${email}
+`
 }
 
 inquirer
@@ -183,4 +184,12 @@ inquirer
         }
     ])
 
-    .then((answers) => generateReadme(answers));
+    .then((answers) => {
+        fs.writeFile('readmeOutput.md', generateReadme(answers), (err) => {
+            if(err)
+                console.log(err);
+            else {
+                console.log("README created successfully!");
+            }
+        });
+    });
