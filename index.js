@@ -1,5 +1,34 @@
 const inquirer = require("inquirer");
 
+function generateReadme({title, description, instructions, usageInfo, contGuides, testInfo, license, username, email}){
+    return `
+    # ${title}
+
+    # Description
+    ## ${description}
+
+    # Installation Instructions
+    ## ${instructions}
+
+    # Usage
+    ## ${usageInfo}
+
+    # Contribution Guidelines
+    ## ${contGuides}
+
+    # Test Instructions
+    ## ${testInfo}
+
+    # License
+    ## ${title} is licensed under the ${license}
+
+    # Questions
+    ## Direct any additional questions to my GitHub or Email
+    ## My GitHub: https://github.com/${username}
+    ## My Email: ${email}
+    `
+}
+
 inquirer
     .prompt ([
         {
@@ -48,7 +77,7 @@ inquirer
                 'BSD 2 License',
                 'BSD 3 License',
                 'Boost Software License',
-                'Creative Commons Zero',
+                'Creative Commons Zero License',
                 'Eclipse Public License',
                 'GNU Affero General Public License',
                 'GNU General Public License 2.0',
