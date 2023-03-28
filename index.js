@@ -87,6 +87,21 @@ function generateReadme({title, description, instructions, usageInfo, contGuides
     return `
 # ${title}  [![License](${licenses[licenseIndex].badge})](${licenses[licenseIndex].link})
 
+# Table of Contents
+* [Description](#description)
+
+* [Installation](#installation)
+
+* [Usage](#usage)
+
+* [Contributing](#contributing)
+
+* [Test Instructions](#test-instructions)
+
+* [License](#license)
+
+* [Questions](#questions)
+
 ## Description
 ${description}
 
@@ -96,7 +111,7 @@ ${instructions}
 ## Usage
 ${usageInfo}
 
-## Contribution Guidelines
+## Contributing
 ${contGuides}
 
 ## Test Instructions
